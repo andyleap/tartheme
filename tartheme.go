@@ -94,6 +94,10 @@ func (a Assets) Prefix(prefix string) Assets {
 func (a Assets) Templates() *template.Template {
 	t := template.New("")
 
+	return a.AddTemplates(t)
+}
+
+func (a Assets) AddTemplates(t *template.Template) *template.Template {
 	for name, asset := range a {
 		t.New(name).Parse(string(asset.Data))
 	}
